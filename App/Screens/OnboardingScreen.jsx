@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React from "react";
-import { Image, Text, TouchableOpacity } from "react-native";
+import { Image, Text, Pressable } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 
@@ -10,13 +10,13 @@ const OnboardingScreen = () => {
   return (
     <ScreenContainer>
       <BackgroundWrapper
-        source={require("../../assets/Images/onboardingBg.png")}
+        source={require("../../assets/Images/splashBg.png")}
         resizeMode="cover"
       >
         <TitleText>Real Driving Test Routes</TitleText>
         <ImageWrapper>
           <CenterImage
-            source={require("../../assets/Images/onboardingImage.png")}
+            source={require("../../assets/Images/bglogo.png")}
             resizeMode="contain"
           />
         </ImageWrapper>
@@ -27,12 +27,6 @@ const OnboardingScreen = () => {
         <PrimaryButton onPress={() => navigation.navigate("Register")}>
           <PrimaryButtonText>Continue</PrimaryButtonText>
         </PrimaryButton>
-        {/* <TouchableOpacity onPress={() => navigation.navigate("Login")}>
-          <FooterText>
-            ALREADY HAVE AN ACCOUNT?{" "}
-            <Text style={{ color: "#8e97fd" }}>LOG IN</Text>
-          </FooterText>
-        </TouchableOpacity> */}
       </BackgroundWrapper>
     </ScreenContainer>
   );
@@ -82,7 +76,7 @@ const SecondaryText = styled.Text`
   text-align: center;
 `;
 
-const PrimaryButton = styled.TouchableOpacity`
+const PrimaryButton = styled.Pressable`
   background: #8e97fd;
   width: 100%;
   text-align: center;

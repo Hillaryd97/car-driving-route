@@ -1,6 +1,6 @@
 import { useNavigation } from "@react-navigation/native";
 import React, { useState } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, Pressable, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import styled from "styled-components/native";
 import { FontAwesome } from "@expo/vector-icons"; // For Facebook icon
@@ -13,7 +13,7 @@ const Register = () => {
   return (
     <ScreenContainer>
       <BackgroundWrapper
-        source={require("../../assets/Images/signinBg.png")}
+        source={require("../../assets/Images/pageBG.png")}
         resizeMode="stretch"
       >
         <TitleText>Create your account</TitleText>
@@ -58,9 +58,15 @@ const Register = () => {
             {isChecked && <CheckboxTick />}
           </Checkbox>
         </PrivacyPolicyContainer>
-        <ActionButton onPress={() => navigation.navigate("Register")}>
+        <ActionButton onPress={() => navigation.navigate("HomeScreen")}>
           <ActionButtonText>GET STARTED</ActionButtonText>
         </ActionButton>
+        <FooterContainer onPress={() => navigation.navigate("Login")}>
+          <FooterText>
+            HAVE AN ACCOUNT?{" "}
+            <FooterHighlightText>LOGIN</FooterHighlightText>
+          </FooterText>
+        </FooterContainer>
       </BackgroundWrapper>
     </ScreenContainer>
   );
@@ -70,7 +76,9 @@ const Register = () => {
 const ScreenContainer = styled(SafeAreaView)`
   flex: 1;
 `;
-
+const FooterHighlightText = styled.Text`
+  color: #8e97fd;
+`;
 const BackgroundWrapper = styled.ImageBackground`
   flex: 1;
   padding: 0px 20px;
@@ -81,7 +89,7 @@ const TitleText = styled.Text`
   font-weight: 700;
   color: #3f414e;
   text-align: center;
-  margin: 72px 0px 10px 0px;
+  margin: 86px 0px 10px 0px;
 `;
 
 const SubtitleText = styled.Text`
@@ -99,7 +107,7 @@ const TextInputField = styled.TextInput`
   margin: 8px 0px;
 `;
 
-const SocialButton = styled.TouchableOpacity`
+const SocialButton = styled.Pressable`
   background: ${({ white }) => (white ? "#fff" : "#7583ca")};
   flex-direction: row;
   align-items: center;
@@ -117,6 +125,7 @@ const SocialButtonText = styled.Text`
   font-size: 14px;
   color: ${({ color }) => color || "#fff"};
   text-align: center;
+  font-weight: 600;
 `;
 
 const PrivacyPolicyContainer = styled.View`
@@ -126,7 +135,7 @@ const PrivacyPolicyContainer = styled.View`
   justify-content: space-between;
 `;
 
-const Checkbox = styled.TouchableOpacity`
+const Checkbox = styled.Pressable`
   width: 20px;
   height: 20px;
   border-width: 1px;
@@ -149,7 +158,7 @@ const PolicyText = styled.Text`
   font-weight: 600;
 `;
 
-const ActionButton = styled.TouchableOpacity`
+const ActionButton = styled.Pressable`
   background: #8e97fd;
   width: 100%;
   padding: 16px 0px;
@@ -161,6 +170,17 @@ const ActionButtonText = styled.Text`
   font-size: 14px;
   color: #fff;
   text-align: center;
+`;
+
+const FooterContainer = styled.Pressable`
+  margin-top: 20px;
+`;
+
+const FooterText = styled.Text`
+  font-size: 16px;
+  color: #a1a4b2;
+  text-align: center;
+  font-weight: 600;
 `;
 
 export default Register;
